@@ -1,0 +1,21 @@
+#!/bin/bash
+
+showusage=0
+while getopts "h" i
+do
+	case $i in
+		h)
+			showusage=1
+			;;
+	esac
+done
+shift $((OPTIND-1))
+
+if [ $showusage -eq 1 ]
+then
+	echo wolfram [-h]'"<question>"'
+	exit 0
+fi
+
+open "http://www.wolframalpha.com/input?i=$*"
+
